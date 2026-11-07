@@ -26,6 +26,7 @@
   --card: rgba(24, 66, 150, .18); --card-on: rgba(44, 106, 210, .26); --inset: rgba(1, 8, 28, .55);
   --line: rgba(120, 170, 255, .15); --line-2: rgba(120, 170, 255, .26); --line-3: rgba(150, 196, 255, .48);
   --ok: oklch(.8 .13 170); --warn: oklch(.83 .14 80); --bad: oklch(.72 .16 25); --neg: oklch(.68 .15 25); --neg-txt: oklch(.77 .14 25);
+  --s-subi: #4da3ff; --s-decide: #b9a6ff; --s-stock: rgba(120, 170, 255, .2);
   --metal: linear-gradient(180deg, #f6f9ff 0%, #bcd3f4 44%, #7ea6e2 56%, #4c7cc8 100%);
   --fond: radial-gradient(ellipse 65% 55% at 50% 40%, rgba(34, 98, 214, .42), transparent 72%), radial-gradient(ellipse 130% 100% at 50% 45%, #0b2559, #040d24 78%);
   --quadrillage: linear-gradient(rgba(120, 172, 255, .07) 1px, transparent 1px) 0 0 / 4rem 4rem, linear-gradient(90deg, rgba(120, 172, 255, .07) 1px, transparent 1px) 0 0 / 4rem 4rem;
@@ -241,6 +242,97 @@ input[type="range"]::-moz-range-thumb { width: .7rem; height: .7rem; border: .18
 .avap-l.tete-r { padding-block: .5rem; font: 500 .6875rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
 .avap-l.tete-r span { text-align: right; }
 
+/* ---- Démonstrations des modules : onglets, vues, barres, cascade, ratios, composantes ---- */
+.pied-depot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.pied-depot .note { font-family: var(--f-mono); font-size: .8125rem; }
+.pied-depot .illus { margin-left: auto; }
+.illus { display: inline-flex; align-items: center; height: 1.4rem; padding: 0 .6rem; border: 1px dashed var(--line-2); font: 500 .625rem/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--fainter); white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; gap: .35rem; min-height: 1.6rem; padding: .15rem .7rem; border: 1px solid var(--line-2); background: var(--card); font: 500 .75rem/1.2 var(--f-mono); color: var(--dim); white-space: nowrap; }
+.pill.acc { border-color: var(--acc-line); background: var(--acc-soft); color: var(--acc-hi); }
+.choix-f { font: 500 .75rem var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--c, var(--acc-hi)); }
+.choix-t { font: 600 1.5rem/1.25 var(--f-titre); letter-spacing: -.01em; }
+.cle-sep { height: 1px; background: var(--line); }
+.cle-liste { display: grid; gap: .75rem; }
+.cle-liste div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.cle-liste dt { font-size: .9375rem; color: var(--dim); }
+.cle-liste dd { font: 500 1rem var(--f-mono); color: var(--text); }
+.onglets { display: flex; flex-wrap: wrap; gap: .375rem; }
+.onglets button { height: 2.25rem; padding: 0 .9rem; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); font-size: .875rem; font-weight: 500; color: var(--dim); cursor: pointer; white-space: nowrap; transition: border-color .2s ease, background .2s ease, color .2s ease; }
+.onglets button:hover { border-color: var(--line-3); color: var(--text); }
+.onglets button[aria-pressed="true"] { border-color: var(--acc-line); background: var(--acc-sel); color: var(--acc-hi); }
+.vue { display: grid; gap: 2rem; padding-top: .5rem; }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.kpi-g { display: grid; align-content: start; gap: .75rem; padding: 1.75rem 1.75rem 1.5rem; border: 1px solid var(--line); background: var(--card); }
+.kpi-v { font: 800 3.25rem/1 var(--f-titre); letter-spacing: -.03em; color: var(--text); white-space: nowrap; }
+.kpi-v small { margin-left: .35rem; font: 600 1.25rem var(--f-titre); color: var(--dim); }
+.kpi-g.ok .kpi-v { color: var(--ok); } .kpi-g.bad .kpi-v { color: var(--bad); } .kpi-g.warn .kpi-v { color: var(--warn); }
+.barres { position: relative; height: 22rem; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.75rem; }
+.barres .zero { position: absolute; left: 0; right: 0; top: var(--zero, 50%); height: 1px; background: rgba(170, 205, 255, .3); }
+.colonne { position: relative; }
+.colonne i { position: absolute; left: 14%; right: 14%; background: var(--acc); transition: top .6s var(--ease), height .6s var(--ease), background .3s ease; }
+.colonne i.n { background: var(--neg); } .colonne i.z { background: var(--line-3); }
+.colonne b { position: absolute; left: 0; right: 0; text-align: center; font: 500 .9375rem var(--f-mono); color: var(--text); transition: top .6s var(--ease); }
+.colonne b.n { color: var(--neg-txt); }
+.colonne span { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font: 400 .75rem var(--f-mono); color: var(--faint); }
+.marches { display: grid; gap: .375rem; }
+.marche { display: grid; grid-template-columns: 13rem minmax(0, 1fr) 3.5rem; gap: 1rem; align-items: center; width: 100%; padding: .45rem .75rem; border: 1px solid transparent; border-radius: var(--r); background: none; text-align: left; font: inherit; color: inherit; }
+button.marche { cursor: pointer; }
+button.marche:hover { background: var(--card); }
+button.marche[aria-pressed="true"] { border-color: var(--line-2); background: var(--card-on); }
+.marche .nom { font-size: 1rem; color: var(--dim); }
+button.marche[aria-pressed="true"] .nom, .marche.borne .nom { color: var(--text); }
+.piste { position: relative; height: 1.5rem; }
+.piste .barre { position: absolute; top: 0; bottom: 0; left: var(--d); width: var(--l); min-width: 3px; background: var(--c, var(--acc)); }
+.marche.borne .barre { background: var(--line-3); }
+.marche .val { font: 500 .9375rem var(--f-mono); text-align: right; color: var(--text); font-variant-numeric: tabular-nums; }
+.bilan-cascade { display: flex; flex-wrap: wrap; gap: .625rem; padding-top: .25rem; }
+.pastille.resultat { margin-left: auto; border-color: color-mix(in oklch, var(--ok) 50%, transparent); color: var(--text); }
+.pastille.resultat .ic { color: var(--ok); }
+.pastille.resultat b { color: var(--ok); }
+.ratios { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+.ratio { display: grid; gap: .5rem; padding: 1.125rem 1.25rem; border: 1px solid var(--line); background: var(--card); text-align: left; font: inherit; color: inherit; cursor: pointer; transition: border-color .25s ease, background .25s ease; }
+.ratio:hover { border-color: var(--line-3); }
+.ratio[aria-pressed="true"] { border-color: var(--acc); background: var(--card-on); }
+.ratio-n { min-height: 2.6rem; font-size: 1rem; font-weight: 500; line-height: 1.3; color: var(--muted); }
+.ratio-v { font: 800 2.5rem/1 var(--f-titre); letter-spacing: -.02em; color: var(--ok); }
+.ratio-v.neutre { color: var(--text); }
+.ratio-s { font: 400 .75rem var(--f-mono); color: var(--faint); }
+.compo { display: grid; gap: .5rem; padding-top: .5rem; }
+.compo-l { display: grid; grid-template-columns: 12rem minmax(0, 1fr) 4.5rem; align-items: center; gap: 1rem; font-size: .9375rem; color: var(--dim); }
+.compo-l i { display: block; height: .5rem; width: var(--l); background: var(--c); transition: width .4s var(--ease); }
+.compo-l b { font: 500 .875rem var(--f-mono); text-align: right; color: var(--text); }
+.graphe .aire-stock { fill: var(--s-stock); }
+.graphe .aire-prod { fill: rgba(77, 163, 255, .32); }
+.legende i.stock { height: .6rem; background: var(--s-stock); border: 1px solid var(--line-3); }
+.voies { display: grid; gap: .625rem; padding-top: .5rem; }
+.voies .puces { justify-content: flex-start; }
+.actions { display: grid; gap: .5rem; }
+.action { display: grid; grid-template-columns: auto minmax(0, 1fr) auto 6rem; align-items: center; gap: 1rem; padding: .875rem 1.125rem; border: 1px solid var(--line); background: var(--card); font-size: 1rem; color: var(--dim); cursor: pointer; transition: border-color .25s ease; }
+.action input { margin: 0; accent-color: var(--acc); width: 1rem; height: 1rem; }
+.action small { font: 400 .75rem var(--f-mono); color: var(--faint); }
+.action .mobilise { font: 700 1.375rem/1 var(--f-titre); text-align: right; color: var(--acc-hi); }
+.action.retenue { border-color: var(--acc-line); color: var(--text); }
+.curseurs.deux-c { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; align-items: end; }
+.curseur .seg { align-self: start; justify-self: start; }
+.seuils { display: grid; gap: 1.25rem; padding-top: 1rem; }
+.seuil-l { display: grid; grid-template-columns: 8rem minmax(0, 1fr) 6rem 6.5rem; align-items: center; gap: 1rem; font-size: 1rem; color: var(--muted); }
+.rail-s { position: relative; height: .625rem; background: var(--line); }
+.rail-s i { position: absolute; left: 0; top: 0; bottom: 0; width: var(--l); background: var(--c); transition: width .4s var(--ease), background .3s ease; }
+.rail-s b { position: absolute; left: var(--s); top: -.35rem; bottom: -.35rem; width: 2px; background: var(--text); }
+.seuil-l strong { font: 700 1.625rem/1 var(--f-titre); text-align: right; color: var(--text); }
+.seuil-l small { font: 400 .75rem var(--f-mono); color: var(--faint); }
+.barres-h { display: grid; gap: 1.125rem; }
+.barre-h { display: grid; grid-template-columns: 12rem minmax(0, 1fr) 6rem; align-items: center; gap: 1.25rem; padding: .375rem .5rem; border: 1px solid transparent; font-size: 1.0625rem; color: var(--muted); }
+.barre-h.choque { border-color: var(--acc-line); background: var(--acc-soft); color: var(--text); }
+.piste-h { height: .75rem; background: var(--line); overflow: hidden; }
+.piste-h i { display: block; height: 100%; width: var(--l); background: linear-gradient(90deg, var(--acc-lo), var(--acc-hi)); transition: width .8s var(--ease); }
+.piste-h i.n { background: linear-gradient(90deg, oklch(.55 .14 25), var(--neg)); }
+.barre-h b { font: 700 1.5rem/1 var(--f-titre); text-align: right; color: var(--text); }
+.barre-h b small { margin-left: .3rem; font: 400 .8125rem var(--f-mono); color: var(--dim); }
+.zones.trois .zones-l { grid-template-columns: 11rem repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.zones.trois .zones-l p { font-size: 1rem; }
+.zones.trois .zones-l.tete-z b { font-size: 1.25rem; letter-spacing: 0; }
+
 /* ---- Questionnaire ---- */
 .pas-q { display: flex; align-items: center; gap: 0; }
 .pas-q li { display: flex; align-items: center; gap: .625rem; font: 500 .75rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
@@ -419,6 +511,23 @@ html:not(.js) .pour-lecteur { display: none; }
   .graphe, .graphe.court { height: 14rem; }
   .cmp-l { grid-template-columns: auto minmax(0, 1fr); }
   .cmp-l p { grid-column: 1 / -1; font-size: 1rem; }
+  .kpis, .ratios { grid-template-columns: minmax(0, 1fr); gap: .625rem; }
+  .kpi-v { font-size: 2.25rem; }
+  .barres { height: 15rem; gap: .625rem; }
+  .marche { grid-template-columns: 7rem minmax(0, 1fr) 2.75rem; gap: .5rem; }
+  .pastille.resultat { margin-left: 0; }
+  .compo-l { grid-template-columns: 7rem minmax(0, 1fr) 3.5rem; gap: .5rem; }
+  .action { grid-template-columns: auto minmax(0, 1fr) 4.5rem; }
+  .action > small { grid-column: 2 / -1; }
+  .action .mobilise { grid-area: 1 / 3; }
+  .curseurs.deux-c { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .seuil-l { grid-template-columns: 5.5rem minmax(0, 1fr) 4.5rem; }
+  .seuil-l small { grid-column: 2 / -1; }
+  .barre-h { grid-template-columns: 7.5rem minmax(0, 1fr) 4.5rem; gap: .625rem; font-size: .9375rem; }
+  .barre-h b { font-size: 1.25rem; }
+  .zones.trois .zones-l { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
+  .zones.trois .zones-l.tete-z { display: none; }
+  .zones.trois .zones-l p::before { content: attr(data-l) " : "; font: 500 .6875rem var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
   .avap-l { grid-template-columns: minmax(0, 1fr) 5rem 5rem; }
   .avap-l .ecart, .avap-l.tete-r span:last-child { display: none; }
   .avap-l b { font-size: 1.25rem; }
@@ -616,14 +725,14 @@ html:not(.js) .pour-lecteur { display: none; }
   </div>
 </section>
 
-<section class="scene" data-chapitre="L’essentiel" data-nom="Douze modules">
+<section class="scene" data-chapitre="L’essentiel" data-nom="Treize modules">
   <div class="page centre">
     <div class="chiffre">
-      <p class="chiffre-n" data-e data-compte="12">12</p>
+      <p class="chiffre-n" data-e data-compte="13">13</p>
       <p class="phrase" data-e>modules sur un même arrêté, <em>sous un seul toit.</em></p>
       <div class="pastilles" data-e>
         <span class="pastille"><i></i>Pilotage du bilan <b>6</b></span>
-        <span class="pastille"><i></i>Gestion des risques <b>3</b></span>
+        <span class="pastille"><i></i>Gestion des risques <b>4</b></span>
         <span class="pastille"><i></i>Portefeuille obligataire <b>1</b></span>
         <span class="pastille"><i></i>Reporting <b>2</b></span>
       </div>
@@ -680,6 +789,68 @@ html:not(.js) .pour-lecteur { display: none; }
   </div>
 </section>
 
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Analyse du bilan" data-demo="bilan">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Analyse du bilan</p>
+      <h2 class="titre" data-e>Dix vues de l’arrêté, <em>26 contrôles de cohérence.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><div class="onglets" id="bilanOnglets" role="group" aria-label="Vues de l’analyse du bilan"></div><span class="illus">Valeurs d’illustration</span></div>
+      <div class="vue" id="bilanVue" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Écoulement" data-demo="ecoulement">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Écoulement</p>
+      <h2 class="titre" data-e>Le bilan devient <em>des flux datés.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="pied-depot"><span class="seg" id="ecoMesure" role="group" aria-label="Mesure"><button type="button" aria-pressed="true">Gap</button><button type="button" aria-pressed="false">Gap cumulé</button></span><span class="note mono">Md FCFA, par time bucket</span></div>
+        <div class="barres" id="ecoBarres" role="img" aria-label="Gap par time bucket"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Plus fort gap</p><p class="cle-v">+60<small>Md FCFA</small></p><p class="cle-s">entre 1 et 5 ans</p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span>Le dernier gap cumulé revient à zéro : le bilan s’équilibre.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Variations des gaps" data-demo="cascade">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Écoulement, variations des gaps</p>
+      <h2 class="titre" data-e>Entre deux arrêtés, <em>chaque écart a sa cause.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><span class="seg pour-lecteur" id="segLecture" role="group" aria-label="Lecture de la décomposition"><button type="button" aria-pressed="true">Quatre composantes</button><button type="button" aria-pressed="false">Six effets</button></span><span class="note mono">Gap de 1 à 5 ans, Md FCFA</span></div>
+      <div class="marches" id="marches"></div>
+      <div class="bilan-cascade" id="bilanCascade"></div>
+      <div class="choix gauche" id="effet" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Liquidité" data-demo="liquidite">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Liquidité réglementaire</p>
+      <h2 class="titre" data-e>Les ratios <em>de votre zone.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><span class="seg" id="zoneLiq" role="group" aria-label="Zone de l’établissement"><button type="button" aria-pressed="true">UMOA</button><button type="button" aria-pressed="false">CEMAC</button></span><span class="illus">Valeurs d’illustration</span></div>
+      <div class="ratios" id="ratios" role="group" aria-label="Ratios de liquidité"></div>
+      <div class="choix gauche" id="ratioChoix" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
 <section class="scene" data-chapitre="Pilotage du bilan" data-nom="IRRBB" data-demo="chocs">
   <div class="page">
     <header class="tete">
@@ -702,16 +873,49 @@ html:not(.js) .pour-lecteur { display: none; }
   </div>
 </section>
 
-<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Inexpliqué">
-  <div class="page centre">
-    <div class="chiffre">
-      <p class="chiffre-n" data-e data-compte="0">0</p>
-      <p class="phrase" data-e>inexpliqué : chaque écart entre deux arrêtés <em>trouve sa cause.</em></p>
-      <div class="pastilles" data-e>
-        <span class="pastille"><i></i>Ce qui nous est arrivé <b>−9</b></span>
-        <span class="pastille"><i></i>Ce qui relève de nos décisions <b>+27</b></span>
-        <span class="pastille"><i></i>Ce qui vient du calcul <b>−1</b></span>
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="TCI / FTP" data-demo="tci">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>TCI / FTP</p>
+      <h2 class="titre" data-e>Le taux de cession interne <em>tarifie chaque opération.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <span class="seg" id="tciProduit" role="group" aria-label="Produit"><button type="button" aria-pressed="true">Crédit aux entreprises</button><button type="button" aria-pressed="false">Crédit immobilier</button><button type="button" aria-pressed="false">Trésorerie des PME</button></span>
+        <div class="curseurs trois">
+          <div class="curseur"><label for="tciDuree">Durée <output id="tciDureeVal"></output></label><input type="range" id="tciDuree" min="1" max="15" step="1" value="5"></div>
+          <div class="curseur"><label for="tciMontant">Montant <output id="tciMontantVal"></output></label><input type="range" id="tciMontant" min="10" max="2000" step="10" value="500"></div>
+          <div class="curseur"><label for="tciTaux">Taux client <output id="tciTauxVal"></output></label><input type="range" id="tciTaux" min="6" max="14" step="0.05" value="10.5"></div>
+        </div>
+        <div class="compo" id="tciCompo"></div>
       </div>
+      <aside class="cle">
+        <div><p class="cle-l">RAROC de l’opération</p><p class="cle-v" id="tciRaroc">0 %</p><p class="cle-s" id="tciSeuil">seuil 15 %</p></div>
+        <div class="cle-sep"></div>
+        <dl class="cle-liste" id="tciTaux3"></dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Projection dynamique" data-demo="projection">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Projection dynamique</p>
+      <h2 class="titre" data-e>Le bilan de demain, <em>avec les mêmes moteurs.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="legende"><span><i class="stock"></i>Stock écoulé</span><span><i></i>Production nouvelle</span></div>
+        <svg class="graphe court" id="projGraphe" role="img" aria-label="Encours de crédits projeté sur douze trimestres"></svg>
+        <div class="curseur"><label for="projProd">Production nouvelle par trimestre <output id="projProdVal"></output></label><input type="range" id="projProd" min="0" max="60" step="5" value="30"></div>
+        <div class="voies"><span class="cle-l">Trois voies pour la production nouvelle, sans second moteur</span><div class="puces"><span class="puce">Hypothèses sur les postes</span><span class="puce">Plan importé avec le classeur</span><span class="puce">Atelier PMT en huit étapes</span></div></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Encours à trois ans</p><p class="cle-v" id="projTotal">0<small>Md</small></p><p class="cle-s" id="projEvol"></p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span id="projPart"></span></p>
+      </aside>
     </div>
   </div>
 </section>
@@ -722,7 +926,7 @@ html:not(.js) .pour-lecteur { display: none; }
       <p class="ouvre-n" data-e>02</p>
       <p class="ouvre-l" data-e>Module</p>
       <h2 class="ouvre-t" data-e>Gestion des risques</h2>
-      <p class="ouvre-p" data-e>Des chocs combinés, un plan quand l’horizon ne tient pas, le capital qui les couvre.</p>
+      <p class="ouvre-p" data-e>Des chocs combinés, un plan quand l’horizon ne tient pas, le capital et la liquidité qui les couvrent.</p>
     </div>
   </div>
 </section>
@@ -734,10 +938,10 @@ html:not(.js) .pour-lecteur { display: none; }
       <h2 class="titre" data-e>Les risques mesurés <em>sur le même arrêté.</em></h2>
     </header>
     <div class="cartes deux" data-e>
-      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-zap"/></svg></span><b>Stress test</b><p>Des scénarios qui combinent sept familles de chocs, et l’horizon de survie qu’ils laissent.</p></div>
-      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-activity"/></svg></span><b>Plan de remédiation</b><p>Les actions qui ramènent l’horizon à l’objectif, la moins chère d’abord, avec leur coût.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-zap"/></svg></span><b>Stress test</b><p>Des scénarios qui combinent sept familles de chocs, l’horizon de survie qu’ils laissent, et le plan qui le rétablit.</p></div>
       <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-shield"/></svg></span><b>Risk Management</b><p>Crédit, marché et opérationnel au pilier 1, la solvabilité, jusqu’à l’ICAAP.</p></div>
       <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-fx"/></svg></span><b>Risque de change</b><p>Les positions par devise et leur sensibilité aux cours.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-liq"/></svg></span><b>ILAAP</b><p>L’adéquation de la liquidité, lue sur les calculs des modules, sous projection et sous stress.</p></div>
     </div>
   </div>
 </section>
@@ -758,6 +962,104 @@ html:not(.js) .pour-lecteur { display: none; }
         <div class="bascules" id="familles" role="group" aria-label="Familles de chocs du scénario"></div>
         <div><p class="cle-l">Horizon de survie</p><p class="cle-v" id="stressHorizon">0</p><p class="cle-s" id="stressSolva"></p></div>
       </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Remédiation" data-demo="remediation">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Plan de remédiation</p>
+      <h2 class="titre" data-e>Un plan, <em>quand l’horizon ne tient pas.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="curseur"><label for="objectif">Objectif d’horizon de survie, sous une fuite de 30 % des dépôts <output id="objectifVal"></output></label><input type="range" id="objectif" min="30" max="180" step="5" value="90"></div>
+        <div class="actions" id="actions"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Horizon avec le plan</p><p class="cle-v" id="planHorizon">0</p><p class="cle-s" id="planSans"></p></div>
+        <div class="cle-sep"></div>
+        <dl class="cle-liste" id="planKpi"></dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Risk Management">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Risk Management</p>
+      <h2 class="titre" data-e>Crédit, marché, opérationnel, <em>jusqu’à l’ICAAP.</em></h2>
+    </header>
+    <div class="cartes" data-e>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-bank"/></svg></span><b>Risque de crédit</b><p>De l’exposition brute aux actifs pondérés, la qualité du portefeuille et les grands risques.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-trend"/></svg></span><b>Risque de marché</b><p>Obligations et actions par zone, émetteur et devise ; la courbe des taux et ses variations.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-activity"/></svg></span><b>Risque opérationnel</b><p>Les pertes par ligne de métier, la cartographie des risques et les plans d’action.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-gauge"/></svg></span><b>ICAAP et capital planning</b><p>Le besoin de capital sous les scénarios de stress, sur l’horizon du plan.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-file"/></svg></span><b>Déclaration FODEP</b><p>Analyser une déclaration existante, ou la générer depuis les calculs.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-shield"/></svg></span><b>Solvabilité</b><p>CET1, Tier 1 et solvabilité globale, face au minimum et au coussin de conservation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Un nouveau prêt" data-demo="solvabilite">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Risk Management</p>
+      <h2 class="titre" data-e>Un nouveau prêt, <em>lu face aux seuils.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="curseurs deux-c">
+          <div class="curseur"><label for="pretMontant">Montant du prêt <output id="pretMontantVal"></output></label><input type="range" id="pretMontant" min="0" max="60" step="1" value="20"></div>
+          <div class="curseur"><label>Pondération du risque</label><span class="seg" id="pretPonderation" role="group" aria-label="Pondération"><button type="button" aria-pressed="false">20 %</button><button type="button" aria-pressed="false">50 %</button><button type="button" aria-pressed="true">100 %</button><button type="button" aria-pressed="false">150 %</button></span></div>
+        </div>
+        <div class="seuils" id="pretRatios"></div>
+        <p class="note">Seuils du dispositif prudentiel de l’UMOA, coussin de conservation compris.</p>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Exposition sur le Tier 1</p><p class="cle-v" id="pretPart">0 %</p><p class="cle-s" id="pretRisque"></p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-s" id="pretRwa"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Risque de change" data-demo="change">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Risque de change</p>
+      <h2 class="titre" data-e>Les positions par devise, <em>et ce qu’un cours leur coûte.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="pied-depot"><span class="note mono">Position nette par devise, Md FCFA</span><span class="illus">Valeurs d’illustration</span></div>
+        <div class="barres-h" id="positions"></div>
+        <div class="curseur"><label for="chocDollar">Variation du dollar face au franc CFA <output id="chocDollarVal"></output></label><input type="range" id="chocDollar" min="-20" max="20" step="1" value="10"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Effet sur le résultat</p><p class="cle-v" id="changeEffet">0</p><p class="cle-s">position en dollars, revalorisée au cours choqué</p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span>Chaque arrêté de l’étude garde sa position : la série se lit d’un comité à l’autre.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="ILAAP">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>ILAAP</p>
+      <h2 class="titre" data-e>L’adéquation de la liquidité, <em>sans second calcul.</em></h2>
+      <p class="chapo" data-e>L’ILAAP lit ce que la Liquidité, l’Écoulement et l’Analyse du bilan ont déjà calculé, sous trois éclairages, et en tire pour chaque indicateur la valeur la plus défavorable de l’horizon.</p>
+    </header>
+    <div class="zones trois" data-e>
+      <div class="zones-l tete-z"><span></span><b>L’arrêté</b><b>La projection centrale</b><b>Chaque scénario de stress</b></div>
+      <div class="zones-l"><span>Approche normative</span><p data-l="Arrêté">Coefficient de liquidité, emplois à moyen et long terme, LCR, NSFR</p><p data-l="Projection">Les mêmes ratios, projetés</p><p data-l="Stress">Les mêmes ratios sous stress, face à la base</p></div>
+      <div class="zones-l"><span>Approche économique</span><p data-l="Arrêté">Gaps de l’écoulement statique, bloc liquidité du bilan</p><p data-l="Projection">Gap dynamique, bilan projeté</p><p data-l="Stress">Horizon de survie, ressources perdues, décollecte du stock</p></div>
+      <div class="zones-l"><span>Synthèse</span><p data-l="Arrêté">Le point de départ</p><p data-l="Projection">Le point clé de l’horizon et sa date</p><p data-l="Stress">Le point clé, et la base à la même date</p></div>
     </div>
   </div>
 </section>
@@ -961,7 +1263,7 @@ html:not(.js) .pour-lecteur { display: none; }
       <svg class="logo-fin" viewBox="0 0 1200 340" role="img" aria-label="ALCO One" data-e><use href="#logo" width="1200" height="340"/></svg>
       <h2 class="hero-titre" data-e>Une vision plus claire <em>pour vos décisions.</em></h2>
       <div class="pastilles fin" data-e>
-        <span class="pastille"><b>12</b>modules</span>
+        <span class="pastille"><b>13</b>modules</span>
         <span class="pastille"><b>1</b>arrêté pour tous</span>
         <span class="pastille"><b>2</b>zones, UMOA et CEMAC</span>
         <span class="pastille"><b>33</b>rôles livrés</span>
@@ -1037,7 +1339,7 @@ DEMOS.avant = {
 const METIERS = [
   { texte: 'Le dossier du comité et les états réglementaires, produits sur les chiffres des modules.', scene: 'Reporting' },
   { texte: 'La structure, les gaps, la liquidité et les taux du bilan, et chaque écart expliqué.', scene: 'Pilotage du bilan' },
-  { texte: 'Des scénarios de stress, un plan de remédiation, la solvabilité jusqu’à l’ICAAP.', scene: 'Gestion des risques' },
+  { texte: 'Des scénarios de stress, un plan de remédiation, la solvabilité jusqu’à l’ICAAP, la liquidité jusqu’à l’ILAAP.', scene: 'Gestion des risques' },
   { texte: 'Les titres valorisés et leur risque mesuré, un achat simulé avant d’être décidé.', scene: 'Portefeuille obligataire' },
 ];
 
@@ -1052,6 +1354,168 @@ DEMOS.toit = {
     };
     boutons.forEach((b, i) => b.addEventListener('click', () => afficher(i)));
     afficher(1);
+  },
+};
+
+/* Pilotage du bilan : les vues de l'analyse du bilan, l'écoulement, la cascade des variations, les
+   ratios de liquidité de la zone, les six chocs, le TCI et la projection. Chiffres d'illustration,
+   cohérents entre eux. */
+const LECTURES_BILAN = [
+  { nom: 'Synthèse', texte: 'L’état de l’arrêté en un écran.', tuiles: [['Total du bilan', '690', 'Md'], ['Équilibre', 'Écart nul', '', 'ok'], ['Contrôles', '1 en échec', '', 'bad']] },
+  { nom: 'Structure', texte: 'Emplois et ressources par grande masse.', tuiles: [['Crédits à la clientèle', '61 %', 'de l’actif'], ['Dépôts de la clientèle', '86 %', 'du passif'], ['Fonds propres', '14,5 %', 'du passif']] },
+  { nom: 'Indicateurs', texte: 'Chaque valeur dit son statut : conforme, alerte ou limite dépassée.', tuiles: [['ROE', '11,8 %', '', 'ok'], ['Crédits sur dépôts', '71 %', '', 'ok'], ['Créances en souffrance', '6,2 %', '', 'bad']] },
+  { nom: 'Réserves', texte: 'Les réserves obligatoires et leur couverture.', tuiles: [['Exigence', '17', 'Md'], ['Couverture', '112 %', '', 'ok'], ['Seuil d’alerte', '105 %']] },
+  { nom: 'Évolution', texte: 'D’un arrêté au suivant, poste par poste.', tuiles: [['Total du bilan', '+4,1 %'], ['Crédits', '+6,3 %'], ['Dépôts', '+2,8 %']] },
+  { nom: 'Concentration', texte: 'Les plus grandes contreparties, par segment de clientèle.', tuiles: [['Dix premiers déposants', '18 %'], ['Vingt premiers emprunteurs', '27 %'], ['Indice HHI', '0,04']] },
+  { nom: 'Maturités', texte: 'Les maturités contractuelles des crédits et des dépôts à terme.', tuiles: [['Durée moyenne des crédits', '3,4', 'ans'], ['Durée moyenne des DAT', '11', 'mois'], ['Échéances dépassées', '0,8 %']] },
+  { nom: 'Ratios stressés', texte: 'Les ratios recalculés sur le bilan stressé.', tuiles: [['Liquidité stressée', '78 %', '', 'warn'], ['Solvabilité stressée', '12,1 %', '', 'ok'], ['Scénario', 'Sévère']] },
+  { nom: 'Contrôles', texte: 'Les 26 contrôles de cohérence, gouvernés dans le catalogue des règles.', tuiles: [['En échec', '1', '', 'bad'], ['À examiner', '2', '', 'warn'], ['Conformes', '23', '', 'ok']] },
+  { nom: 'Bilan projeté', texte: 'Le bilan à une date future, sur un calcul de projection.', tuiles: [['Horizon', '31/12/2027'], ['Total projeté', '747', 'Md'], ['Croissance', '+8,3 %']] },
+];
+
+const grandChiffre = ([l, v, u = '', classe = ''], k) => `<div class="kpi-g ${classe}" style="animation:monter .6s ${(k * 0.06).toFixed(2)}s var(--ease) both"><span class="cle-l">${l}</span><span class="kpi-v">${v}${u ? `<small>${u}</small>` : ''}</span></div>`;
+
+DEMOS.bilan = {
+  init() {
+    const onglets = $('#bilanOnglets');
+    onglets.innerHTML = LECTURES_BILAN.map((o) => `<button type="button" aria-pressed="false">${o.nom}</button>`).join('');
+    const afficher = (i) => {
+      const o = LECTURES_BILAN[i];
+      $('#bilanVue').innerHTML = `<p class="choix-d fondu">${o.texte}</p><div class="kpis">${o.tuiles.map(grandChiffre).join('')}</div>`;
+    };
+    groupe(onglets, afficher)(0, true);
+    afficher(0);
+  },
+};
+
+const GAPS = { libelles: ['≤ 1 mois', '1 à 3 mois', '3 à 12 mois', '1 à 5 ans', '> 5 ans'], gap: [15, -15, 5, 60, -65], cumul: [15, 0, 5, 65, 0] };
+
+/* Des barres positionnées en HTML : leur hauteur et leur position glissent d'une mesure à l'autre. */
+DEMOS.ecoulement = {
+  mesure: 'gap',
+  init() {
+    $('#ecoBarres').innerHTML = GAPS.libelles.map((l) => `<div class="colonne"><i></i><b></b><span>${l}</span></div>`).join('') + '<span class="zero"></span>';
+    groupe($('#ecoMesure'), (i) => { this.mesure = i ? 'cumul' : 'gap'; this.dessiner(); });
+  },
+  entrer() { this.dessiner(); },
+  dessiner() {
+    const hote = $('#ecoBarres');
+    const H = hote.clientHeight || 360;
+    const haut = 34;
+    const bas = 34;
+    const zero = haut + (H - haut - bas) * 80 / 160;
+    const echelle = (H - haut - bas) / 160;
+    hote.style.setProperty('--zero', `${zero}px`);
+    $$('.colonne', hote).forEach((c, i) => {
+      const v = GAPS[this.mesure][i];
+      const h = Math.max(Math.abs(v) * echelle, v === 0 ? 2 : 0);
+      const top = v >= 0 ? zero - h : zero;
+      const barre = $('i', c);
+      barre.style.top = `${top}px`;
+      barre.style.height = `${h}px`;
+      barre.className = v > 0 ? 'p' : v < 0 ? 'n' : 'z';
+      const val = $('b', c);
+      val.textContent = signe(v);
+      val.className = v < 0 ? 'n' : '';
+      val.style.top = `${v >= 0 ? top - 26 : top + h + 8}px`;
+    });
+  },
+};
+
+/* La cascade d'un arrêté à l'autre : chaque marche porte sa famille (ce qui nous est arrivé, ce qui
+   relève de nos décisions, ce qui vient du calcul), et leur somme redonne l'écart exact. */
+const FAMILLES_CASCADE = {
+  subi: { nom: 'Ce qui nous est arrivé', couleur: 'var(--s-subi)' },
+  decide: { nom: 'Ce qui relève de nos décisions', couleur: 'var(--s-decide)' },
+  calcul: { nom: 'Ce qui vient du calcul', couleur: 'var(--faint)' },
+};
+const CASCADE = {
+  depart: 43, arrivee: 60, maximum: 70,
+  composantes: [
+    { nom: 'Vieillissement', valeur: -9, famille: 'subi', question: 'Qu’est-ce que le temps seul a fait ?', dit: 'Le stock existant s’est amorti d’une période.' },
+    { nom: 'Volume', valeur: 25, famille: 'decide', question: 'De combien les encours ont-ils bougé ?', dit: 'Production nouvelle, remboursements et retraits confondus.' },
+    { nom: 'Structure', valeur: 2, famille: 'decide', question: 'A-t-on prêté plus long ou plus court ?', dit: 'À volume égal, ce que les maturités ont changé.' },
+    { nom: 'Résidus', valeur: -1, famille: 'calcul', question: 'Le chiffre a-t-il bougé à cause du calcul ?', dit: 'Conventions modifiées et revalorisation des devises.' },
+  ],
+  effets: [
+    { nom: 'Référentiel', valeur: -2, famille: 'calcul', question: 'Qu’est-ce qui vient de nos conventions ?', dit: 'Le bilan de départ, rejoué avec les conventions d’arrivée.' },
+    { nom: 'Vieillissement', valeur: -9, famille: 'subi', question: 'Qu’est-ce que le temps seul a fait ?', dit: 'Le stock existant s’est amorti d’une période.' },
+    { nom: 'Change', valeur: 1, famille: 'subi', question: 'Qu’est-ce qui vient du cours, sans aucun flux ?', dit: 'Les positions en devises, revalorisées au cours d’arrivée.' },
+    { nom: 'Comportement', valeur: 6, famille: 'subi', question: 'Nos lois d’écoulement disent-elles vrai ?', dit: 'L’écart entre le stock réel et celui que les lois annonçaient.' },
+    { nom: 'Volume', valeur: 19, famille: 'decide', question: 'Avons-nous fait plus d’affaires ?', dit: 'Les encours nouveaux, au profil du stock existant.' },
+    { nom: 'Structure', valeur: 2, famille: 'decide', question: 'Les avons-nous faites plus longues ou plus courtes ?', dit: 'La déformation du profil de maturités.' },
+  ],
+};
+
+DEMOS.cascade = {
+  lecture: 'composantes',
+  choix: { composantes: 1, effets: 4 },
+  init() { groupe($('#segLecture'), (i) => { this.lecture = i ? 'effets' : 'composantes'; this.rendre(); }); this.rendre(); },
+  rendre() {
+    const pct = (v) => `${(v / CASCADE.maximum * 100).toFixed(2)}%`;
+    const liste = CASCADE[this.lecture];
+    const borne = (nom, v) => `<div class="marche borne"><span class="nom">${nom}</span><span class="piste"><span class="barre" style="--d:0%;--l:${pct(v)}"></span></span><span class="val">${nombre(v)}</span></div>`;
+    let cumul = CASCADE.depart;
+    let html = borne('Gap au premier arrêté', CASCADE.depart);
+    liste.forEach((m, i) => {
+      const debut = cumul;
+      cumul += m.valeur;
+      html += `<button type="button" class="marche" data-i="${i}" style="--c:${FAMILLES_CASCADE[m.famille].couleur}"><span class="nom">${m.nom}</span><span class="piste"><span class="barre" style="--d:${pct(Math.min(debut, cumul))};--l:${pct(Math.abs(m.valeur))}"></span></span><span class="val">${signe(m.valeur)}</span></button>`;
+    });
+    html += borne('Gap au second arrêté', CASCADE.arrivee);
+    $('#marches').innerHTML = html;
+    $$('#marches button.marche').forEach((b) => b.addEventListener('click', () => this.choisir(Number(b.dataset.i))));
+    // La somme par famille, puis l'écart et ce qui reste inexpliqué : la somme des marches.
+    const somme = (f) => liste.filter((m) => m.famille === f).reduce((s, m) => s + m.valeur, 0);
+    const reste = CASCADE.arrivee - CASCADE.depart - liste.reduce((s, m) => s + m.valeur, 0);
+    $('#bilanCascade').innerHTML = Object.entries(FAMILLES_CASCADE).map(([f, x]) => `<span class="pastille" style="--c:${x.couleur}"><i></i>${x.nom} <b>${signe(somme(f))}</b></span>`).join('')
+      + `<span class="pastille resultat"><svg class="ic"><use href="#i-check"/></svg>Écart ${signe(CASCADE.arrivee - CASCADE.depart)}, inexpliqué <b>${nombre(reste)}</b></span>`;
+    this.choisir(this.choix[this.lecture]);
+  },
+  choisir(i) {
+    this.choix[this.lecture] = i;
+    const m = CASCADE[this.lecture][i];
+    $$('#marches button.marche').forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    $('#effet').innerHTML = `<span class="choix-f" style="--c:${FAMILLES_CASCADE[m.famille].couleur}">${m.nom} ${signe(m.valeur)}</span><span class="choix-t fondu">« ${m.question} »</span><span class="choix-d fondu">${m.dit}</span>`;
+  },
+};
+
+const RATIOS = {
+  UMOA: [
+    { nom: 'Coefficient de liquidité', valeur: 92, norme: 75, etat: 'DEC 2063', num: ['actifs disponibles et réalisables à un mois', 322], den: ['passifs exigibles à un mois', 350] },
+    { nom: 'Couverture des emplois à moyen et long terme', valeur: 57, norme: 50, etat: 'DEC 2062', num: ['ressources stables', 194], den: ['emplois à moyen et long terme', 340] },
+    { nom: 'LCR', valeur: 131, norme: 100, etat: null, num: ['actifs liquides de haute qualité', 220], den: ['sorties nettes à 30 jours', 168] },
+    { nom: 'NSFR', valeur: 108, norme: 100, etat: null, num: ['financement stable disponible', 540], den: ['financement stable exigé', 500] },
+    { nom: 'Actifs admissibles BCEAO', valeur: 145, norme: null, etat: null, num: ['actifs admissibles au refinancement', 244], den: ['sorties nettes à 30 jours', 168] },
+    { nom: 'Couverture des réserves obligatoires', valeur: 112, norme: 100, etat: null, num: ['avoirs à la banque centrale', 19], den: ['réserves exigées', 17] },
+  ],
+  CEMAC: [
+    { nom: 'Rapport de liquidité à un mois', valeur: 118, norme: 100, etat: 'DEC 1506', num: ['disponible et réalisable à un mois', 413], den: ['exigible à un mois', 350] },
+    { nom: 'Coefficient de transformation à long terme', valeur: 64, norme: 50, etat: 'DEC 1507', num: ['ressources permanentes', 54], den: ['emplois à plus de cinq ans', 85] },
+  ],
+};
+
+DEMOS.liquidite = {
+  zone: 'UMOA',
+  i: 0,
+  init() {
+    groupe($('#zoneLiq'), (i) => { this.zone = i ? 'CEMAC' : 'UMOA'; this.rendre(); });
+    this.rendre();
+  },
+  rendre() {
+    const liste = RATIOS[this.zone];
+    this.i = Math.min(this.i, liste.length - 1);
+    $('#ratios').innerHTML = liste.map((r) => `<button type="button" class="ratio" aria-pressed="false"><span class="ratio-n">${r.nom}</span><span class="ratio-v${r.norme ? '' : ' neutre'}">${nombre(r.valeur)} %</span><span class="ratio-s">${r.norme ? `norme ${r.norme} %` : 'ratio de gestion'}</span></button>`).join('');
+    const choisir = groupe($('#ratios'), (i) => this.afficher(i));
+    choisir(this.i, true);
+    this.afficher(this.i);
+  },
+  afficher(i) {
+    this.i = i;
+    const r = RATIOS[this.zone][i];
+    const de = (x) => (/^[aeéèêiîoôuy]/i.test(x) ? `d’${x}` : `de ${x}`);
+    $('#ratioChoix').innerHTML = `<span class="choix-d fondu"><b class="mono">${nombre(r.num[1])}</b> Md ${de(r.num[0])}, sur <b class="mono">${nombre(r.den[1])}</b> Md ${de(r.den[0])}.</span>`
+      + `<span class="pill${r.etat ? ' acc' : ''}">${r.etat ? `Publié dans le ${r.etat}` : 'Suivi sans état réglementaire'}</span>`;
   },
 };
 
@@ -1116,6 +1580,94 @@ DEMOS.chocs = {
       if (u < 1) this.image = requestAnimationFrame(avancer);
     };
     this.image = requestAnimationFrame(avancer);
+  },
+};
+
+/* TCI : le taux de cession interne d'une opération, ses composantes, et le RAROC que le taux client
+   laisse face au seuil. Hypothèses d'illustration. */
+const PRODUITS_TCI = [
+  { risque: 1.2, ponderation: 1 },
+  { risque: 0.6, ponderation: 0.5 },
+  { risque: 1.8, ponderation: 1 },
+];
+const RATIO_FONDS_PROPRES = 11.5;
+const SEUIL_RAROC = 15;
+const COUTS_OPERATOIRES = 1.0;
+
+DEMOS.tci = {
+  produit: 0,
+  init() {
+    groupe($('#tciProduit'), (i) => { this.produit = i; this.calculer(); });
+    ['#tciDuree', '#tciMontant', '#tciTaux'].forEach((id) => curseur($(id), () => this.calculer()));
+    $$('#tciDuree, #tciMontant, #tciTaux').forEach((c) => c.dispatchEvent(new Event('input')));
+  },
+  calculer() {
+    const p = PRODUITS_TCI[this.produit];
+    const d = Number($('#tciDuree').value);
+    const montant = Number($('#tciMontant').value);
+    const taux = Number($('#tciTaux').value);
+    const pivot = 4.0 + 2.2 * (1 - Math.exp(-d / 4));
+    const liquidite = 0.25 + 0.08 * d;
+    const reserves = 0.15;
+    const tci = pivot + liquidite + reserves;
+    const fondsPropres = RATIO_FONDS_PROPRES * p.ponderation;
+    const plancher = tci + p.risque + COUTS_OPERATOIRES;
+    const requis = plancher + SEUIL_RAROC / 100 * fondsPropres;
+    const raroc = (taux - plancher) / fondsPropres * 100;
+    $('#tciDureeVal').textContent = `${d} an${d > 1 ? 's' : ''}`;
+    $('#tciMontantVal').textContent = `${nombre(montant)} M FCFA`;
+    $('#tciTauxVal').textContent = `${nombre(taux, 2)} %`;
+    $('#tciCompo').innerHTML = [['Composante taux', pivot, 'var(--acc-hi)'], ['Composante liquidité', liquidite, 'var(--s-decide)'], ['Réserves obligatoires', reserves, 'var(--faint)']]
+      .map(([nom, v, c]) => `<div class="compo-l"><span>${nom}</span><i style="--l:${v / 8 * 100}%;--c:${c}"></i><b>${nombre(v, 2)} %</b></div>`).join('');
+    const atteint = raroc >= SEUIL_RAROC;
+    const valeur = $('#tciRaroc');
+    valeur.textContent = `${nombre(raroc, 1)} %`;
+    valeur.style.color = atteint ? 'var(--ok)' : 'var(--bad)';
+    $('#tciSeuil').textContent = atteint ? `au-dessus du seuil de ${SEUIL_RAROC} %` : `sous le seuil de ${SEUIL_RAROC} %`;
+    $('#tciTaux3').innerHTML = [['TCI', tci], ['Taux plancher', plancher], ['Taux requis', requis]]
+      .map(([l, v]) => `<div><dt>${l}</dt><dd>${nombre(v, 2)} %</dd></div>`).join('');
+  },
+};
+
+/* Projection : le stock écoulé et les générations de production nouvelle, sur douze trimestres. */
+const STOCK_INITIAL = 420;
+const AMORTISSEMENT = 0.06;
+
+DEMOS.projection = {
+  init() { curseur($('#projProd'), () => this.dessiner())(); },
+  entrer() { this.dessiner(); },
+  serie(production) {
+    return Array.from({ length: 13 }, (_, t) => {
+      const stock = STOCK_INITIAL * Math.pow(1 - AMORTISSEMENT, t);
+      let nouvelle = 0;
+      for (let g = 1; g <= t; g++) nouvelle += production * Math.pow(1 - AMORTISSEMENT, t - g);
+      return { stock, nouvelle };
+    });
+  },
+  dessiner() {
+    const production = Number($('#projProd').value);
+    $('#projProdVal').textContent = `${production} Md FCFA`;
+    const serie = this.serie(production);
+    const svg = $('#projGraphe');
+    const { W, H } = tailleDe(svg);
+    const m = { g: 38, d: 8, h: 10, b: 22 };
+    const X = (t) => m.g + t / 12 * (W - m.g - m.d);
+    const Y = (v) => H - m.b - v / 800 * (H - m.h - m.b);
+    let s = '';
+    [0, 200, 400, 600, 800].forEach((v) => { s += `<line class="tr" x1="${m.g}" x2="${W - m.d}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.g - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`; });
+    [0, 4, 8, 12].forEach((t) => { s += `<text x="${X(t)}" y="${H - 5}" text-anchor="${t === 0 ? 'start' : t === 12 ? 'end' : 'middle'}">${t === 0 ? 'Arrêté' : `${t / 4} an${t > 4 ? 's' : ''}`}</text>`; });
+    const haut = serie.map((p, t) => `${X(t).toFixed(1)},${Y(p.stock + p.nouvelle).toFixed(1)}`);
+    const milieu = serie.map((p, t) => `${X(t).toFixed(1)},${Y(p.stock).toFixed(1)}`);
+    const bas = [`${X(12)},${Y(0)}`, `${X(0)},${Y(0)}`];
+    s += `<polygon class="aire-stock" points="${milieu.concat(bas).join(' ')}"/>`;
+    s += `<polygon class="aire-prod" points="${haut.concat(milieu.slice().reverse()).join(' ')}"/>`;
+    s += `<polyline class="tracee" points="${haut.join(' ')}"/>`;
+    svg.innerHTML = s;
+    const fin = serie[12];
+    const total = fin.stock + fin.nouvelle;
+    $('#projTotal').innerHTML = `${nombre(total)}<small>Md FCFA</small>`;
+    $('#projEvol').textContent = `${signe((total / STOCK_INITIAL - 1) * 100, 1)} % depuis l’arrêté`;
+    $('#projPart').textContent = `La production nouvelle porte ${nombre(fin.nouvelle / total * 100)} % de l’encours à trois ans.`;
   },
 };
 
@@ -1190,6 +1742,109 @@ DEMOS.stress = {
     v.innerHTML = libelleHorizon(h);
     v.style.color = h >= 90 ? 'var(--ok)' : 'var(--bad)';
     $('#stressSolva').textContent = `Solvabilité stressée : ${nombre(e.solva, 1)} %`;
+  },
+};
+
+/* Remédiation : sous une fuite de 30 % des dépôts, les actions qui couvrent le besoin, la moins
+   chère d'abord, jusqu'à l'objectif d'horizon de survie. */
+const texteHorizon = (h) => (Number.isFinite(h) ? `${nombre(Math.round(h))} jours` : 'plus d’un an');
+const FUITE_REMEDIATION = 30;
+const ACTIONS_REMEDIATION = [
+  { nom: 'Refinancement auprès de la banque centrale', capacite: 60, cout: 300 },
+  { nom: 'Mise en pension de titres', capacite: 45, cout: 380 },
+  { nom: 'Ligne interbancaire confirmée', capacite: 30, cout: 520 },
+  { nom: 'Cession de titres', capacite: 40, cout: 610 },
+  { nom: 'Ralentissement de la production nouvelle', capacite: 25, cout: 750 },
+];
+
+DEMOS.remediation = {
+  init() {
+    $('#actions').innerHTML = ACTIONS_REMEDIATION.map((a, i) => `<label class="action"><input type="checkbox" data-i="${i}" checked><span>${a.nom}</span><small>${a.capacite} Md, ${a.cout} pb</small><b class="mobilise"></b></label>`).join('');
+    $$('#actions input').forEach((c) => c.addEventListener('change', () => this.resoudre()));
+    curseur($('#objectif'), () => this.resoudre())();
+  },
+  resoudre() {
+    const objectif = Number($('#objectif').value);
+    $('#objectifVal').textContent = `${objectif} jours`;
+    const besoin = Math.max(0, FUITE_REMEDIATION / 100 * LIQ.depots * (1 - Math.exp(-objectif / LIQ.duree)) + LIQ.sorties * objectif - LIQ.coussin);
+    const lignes = $$('#actions .action');
+    const ordre = lignes.map((l, i) => i).filter((i) => $('input', lignes[i]).checked).sort((a, b) => ACTIONS_REMEDIATION[a].cout - ACTIONS_REMEDIATION[b].cout);
+    let reste = besoin;
+    let mobilise = 0;
+    let cout = 0;
+    lignes.forEach((l) => { $('.mobilise', l).textContent = ''; l.classList.remove('retenue'); });
+    for (const i of ordre) {
+      if (reste <= 0) break;
+      const a = ACTIONS_REMEDIATION[i];
+      const montant = Math.min(a.capacite, reste);
+      mobilise += montant;
+      cout += montant * a.cout / 10000 * 1000;
+      reste -= montant;
+      $('.mobilise', lignes[i]).textContent = `${nombre(montant, 1)} Md`;
+      lignes[i].classList.add('retenue');
+    }
+    const h = horizonDeSurvie(FUITE_REMEDIATION, LIQ.coussin + mobilise);
+    const atteint = reste <= 1e-9;
+    const v = $('#planHorizon');
+    v.innerHTML = libelleHorizon(h);
+    v.style.color = atteint ? 'var(--ok)' : 'var(--bad)';
+    $('#planSans').textContent = `sans plan : ${texteHorizon(horizonDeSurvie(FUITE_REMEDIATION))}`;
+    $('#planKpi').innerHTML = [['Besoin à couvrir', `${nombre(besoin, 1)} Md`], ['Mobilisé', `${nombre(mobilise, 1)} Md`], ['Coût par an', `${nombre(cout)} M`], ['Objectif', atteint ? 'atteint' : 'hors d’atteinte']]
+      .map(([l, x]) => `<div><dt>${l}</dt><dd>${x}</dd></div>`).join('');
+  },
+};
+
+/* Solvabilité : un nouveau prêt ajoute ses actifs pondérés, et les ratios se lisent face aux seuils
+   du dispositif de l'UMOA (minimum et coussin de conservation). Bilan d'illustration. */
+const FONDS_PROPRES = { cet1: 92, t1: 96, total: 104, rwa: 800 };
+const SEUILS_SOLVA = [['CET1', 'cet1', 7.5], ['Tier 1', 't1', 8.5], ['Solvabilité', 'total', 11.5]];
+
+DEMOS.solvabilite = {
+  ponderation: 1,
+  init() {
+    groupe($('#pretPonderation'), (i) => { this.ponderation = [0.2, 0.5, 1, 1.5][i]; this.calculer(); });
+    curseur($('#pretMontant'), () => this.calculer())();
+  },
+  calculer() {
+    const montant = Number($('#pretMontant').value);
+    $('#pretMontantVal').textContent = `${montant} Md FCFA`;
+    const rwa = FONDS_PROPRES.rwa + montant * this.ponderation;
+    $('#pretRatios').innerHTML = SEUILS_SOLVA.map(([nom, cle, seuil]) => {
+      const ratio = FONDS_PROPRES[cle] / rwa * 100;
+      const ok = ratio >= seuil;
+      return `<div class="seuil-l"><span>${nom}</span><span class="rail-s"><i style="--l:${Math.min(ratio / 20, 1) * 100}%;--c:${ok ? 'var(--ok)' : 'var(--bad)'}"></i><b style="--s:${seuil / 20 * 100}%"></b></span><strong>${nombre(ratio, 1)} %</strong><small>seuil ${nombre(seuil, 1)} %</small></div>`;
+    }).join('');
+    const part = montant / FONDS_PROPRES.t1 * 100;
+    const [couleur, texte] = part > 25 ? ['var(--bad)', 'au-delà de la division des risques, 25 %'] : part >= 10 ? ['var(--warn)', 'grand risque, au-delà de 10 %'] : ['var(--ok)', 'sous le seuil de grand risque, 10 %'];
+    const v = $('#pretPart');
+    v.textContent = `${nombre(part)} %`;
+    v.style.color = couleur;
+    $('#pretRisque').textContent = texte;
+    $('#pretRwa').textContent = `Actifs pondérés : ${nombre(rwa)} Md, dont ${nombre(montant * this.ponderation)} pour ce prêt.`;
+  },
+};
+
+/* Risque de change : la position nette par devise, et l'effet d'une variation du dollar sur le
+   résultat. Positions d'illustration. */
+const POSITIONS = [
+  { devise: 'Euro', position: 18 },
+  { devise: 'Dollar américain', position: 12 },
+  { devise: 'Yuan', position: -3 },
+  { devise: 'Autres devises', position: 2 },
+];
+const DOLLAR = 1;
+
+DEMOS.change = {
+  init() { curseur($('#chocDollar'), () => this.calculer())(); },
+  calculer() {
+    const choc = Number($('#chocDollar').value);
+    $('#chocDollarVal').textContent = `${signe(choc)} %`;
+    const plus = Math.max(...POSITIONS.map((p) => Math.abs(p.position)));
+    $('#positions').innerHTML = POSITIONS.map((p, i) => `<div class="barre-h${i === DOLLAR ? ' choque' : ''}"><span>${p.devise}</span><span class="piste-h"><i class="${p.position < 0 ? 'n' : ''}" style="--l:${Math.abs(p.position) / plus * 100}%"></i></span><b>${signe(p.position)}<small>Md</small></b></div>`).join('');
+    const effet = POSITIONS[DOLLAR].position * choc / 100;
+    const v = $('#changeEffet');
+    v.innerHTML = `${signe(effet, 1)}<small>Md FCFA</small>`;
+    v.style.color = effet < 0 ? 'var(--bad)' : 'var(--ok)';
   },
 };
 
