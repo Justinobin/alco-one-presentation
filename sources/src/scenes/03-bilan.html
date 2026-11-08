@@ -1,0 +1,156 @@
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Pilotage du bilan">
+  <div class="page centre">
+    <div class="ouvre">
+      <p class="ouvre-n" data-e>01</p>
+      <h2 class="ouvre-t" data-e>Pilotage du bilan</h2>
+      <p class="ouvre-p" data-e>Six modules, de l’analyse de l’arrêté à la projection du bilan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Le bilan lu en entier">
+  <div class="page">
+    <header class="tete">
+      <h2 class="titre" data-e>Six modules pour le pilotage du bilan</h2>
+    </header>
+    <dl class="liste-m" data-e>
+      <div><dt>Analyse du bilan</dt><dd>La structure, les indicateurs et l’évolution de l’arrêté, avec ses contrôles de cohérence.</dd></div>
+      <div><dt>Écoulement</dt><dd>Le bilan en flux datés, ses gaps et la décomposition de leurs variations.</dd></div>
+      <div><dt>Liquidité</dt><dd>Les ratios réglementaires de la zone, calculés sur son propre référentiel.</dd></div>
+      <div><dt>IRRBB</dt><dd>La sensibilité de la valeur économique et de la marge d’intérêts aux taux.</dd></div>
+      <div><dt>TCI / FTP</dt><dd>Le taux de cession interne, les marges et le RAROC de chaque opération.</dd></div>
+      <div><dt>Projection dynamique</dt><dd>Le bilan et le plan à moyen terme, projetés par les moteurs de l’arrêté.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Analyse du bilan" data-demo="bilan">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Analyse du bilan</p>
+      <h2 class="titre" data-e>Dix vues de l’arrêté et 26 contrôles de cohérence</h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><div class="onglets" id="bilanOnglets" role="group" aria-label="Vues de l’analyse du bilan"></div><span class="illus">Valeurs d’illustration</span></div>
+      <div class="vue" id="bilanVue" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Écoulement" data-demo="ecoulement">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Écoulement</p>
+      <h2 class="titre" data-e>Les gaps de liquidité par time bucket</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="pied-depot"><span class="seg" id="ecoMesure" role="group" aria-label="Mesure"><button type="button" aria-pressed="true">Gap</button><button type="button" aria-pressed="false">Gap cumulé</button></span><span class="note mono">Md FCFA, par time bucket</span></div>
+        <div class="barres" id="ecoBarres" role="img" aria-label="Gap par time bucket"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Plus fort gap</p><p class="cle-v">+60<small>Md FCFA</small></p><p class="cle-s">entre 1 et 5 ans</p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span>Le dernier gap cumulé revient à zéro : le bilan s’équilibre.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Variations des gaps" data-demo="cascade">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Écoulement, variations des gaps</p>
+      <h2 class="titre" data-e>La variation d’un gap entre deux arrêtés, décomposée par effet</h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><span class="seg pour-lecteur" id="segLecture" role="group" aria-label="Lecture de la décomposition"><button type="button" aria-pressed="true">Quatre composantes</button><button type="button" aria-pressed="false">Six effets</button></span><span class="note mono">Gap de 1 à 5 ans, Md FCFA</span></div>
+      <div class="marches" id="marches"></div>
+      <div class="bilan-cascade" id="bilanCascade"></div>
+      <div class="choix gauche" id="effet" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Liquidité" data-demo="liquidite">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Liquidité réglementaire</p>
+      <h2 class="titre" data-e>Les ratios de liquidité de l’UMOA et de la CEMAC</h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><span class="seg" id="zoneLiq" role="group" aria-label="Zone de l’établissement"><button type="button" aria-pressed="true">UMOA</button><button type="button" aria-pressed="false">CEMAC</button></span><span class="illus">Valeurs d’illustration</span></div>
+      <div class="ratios" id="ratios" role="group" aria-label="Ratios de liquidité"></div>
+      <div class="choix gauche" id="ratioChoix" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="IRRBB" data-demo="chocs">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>IRRBB</p>
+      <h2 class="titre" data-e>La valeur économique et la marge sous six chocs de taux</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="legende"><span><i class="tirets"></i>Courbe de l’arrêté</span><span><i></i>Après le choc</span></div>
+        <svg class="graphe" id="grapheChoc" role="img" aria-label="Courbe de taux avant et après le choc choisi"></svg>
+      </div>
+      <aside class="cle haut">
+        <div class="liste-chocs" id="chocs" role="group" aria-label="Choix du choc de taux">
+          <button type="button" aria-pressed="true">Parallèle haussier</button><button type="button" aria-pressed="false">Parallèle baissier</button><button type="button" aria-pressed="false">Pentification</button><button type="button" aria-pressed="false">Aplatissement</button><button type="button" aria-pressed="false">Hausse des taux courts</button><button type="button" aria-pressed="false">Baisse des taux courts</button>
+        </div>
+        <div><p class="cle-l">ΔEVE sur Tier 1</p><p class="cle-v" id="kpiChoc">−11,2 %</p><p class="cle-s" id="kpiMni">ΔMNI à un an : −2,4 %</p></div>
+        <p class="cle-ok" id="etatChoc"><svg class="ic"><use href="#i-check"/></svg><span>Sous le seuil de 15 % de l’outlier test.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="TCI / FTP" data-demo="tci">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>TCI / FTP</p>
+      <h2 class="titre" data-e>La tarification d’une opération par le taux de cession interne</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <span class="seg" id="tciProduit" role="group" aria-label="Produit"><button type="button" aria-pressed="true">Crédit aux entreprises</button><button type="button" aria-pressed="false">Crédit immobilier</button><button type="button" aria-pressed="false">Trésorerie des PME</button></span>
+        <div class="curseurs trois">
+          <div class="curseur"><label for="tciDuree">Durée <output id="tciDureeVal"></output></label><input type="range" id="tciDuree" min="1" max="15" step="1" value="5"></div>
+          <div class="curseur"><label for="tciMontant">Montant <output id="tciMontantVal"></output></label><input type="range" id="tciMontant" min="10" max="2000" step="10" value="500"></div>
+          <div class="curseur"><label for="tciTaux">Taux client <output id="tciTauxVal"></output></label><input type="range" id="tciTaux" min="6" max="14" step="0.05" value="10.5"></div>
+        </div>
+        <div class="compo" id="tciCompo"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">RAROC de l’opération</p><p class="cle-v" id="tciRaroc">0 %</p><p class="cle-s" id="tciSeuil">seuil 15 %</p></div>
+        <div class="cle-sep"></div>
+        <dl class="cle-liste" id="tciTaux3"></dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Projection dynamique" data-demo="projection">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Projection dynamique</p>
+      <h2 class="titre" data-e>L’encours projeté, du stock écoulé à la production nouvelle</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="legende"><span><i class="stock"></i>Stock écoulé</span><span><i></i>Production nouvelle</span></div>
+        <svg class="graphe court" id="projGraphe" role="img" aria-label="Encours de crédits projeté sur douze trimestres"></svg>
+        <div class="curseur"><label for="projProd">Production nouvelle par trimestre <output id="projProdVal"></output></label><input type="range" id="projProd" min="0" max="60" step="5" value="30"></div>
+        <div class="voies"><span class="cle-l">Sources de la production nouvelle</span><div class="puces"><span class="puce">Hypothèses sur les postes</span><span class="puce">Plan importé avec le classeur</span><span class="puce">Atelier PMT en huit étapes</span></div></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Encours à trois ans</p><p class="cle-v" id="projTotal">0<small>Md</small></p><p class="cle-s" id="projEvol"></p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span id="projPart"></span></p>
+      </aside>
+    </div>
+  </div>
+</section>

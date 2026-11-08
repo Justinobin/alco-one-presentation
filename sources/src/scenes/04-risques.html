@@ -1,0 +1,141 @@
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Gestion des risques">
+  <div class="page centre">
+    <div class="ouvre">
+      <p class="ouvre-n" data-e>02</p>
+      <h2 class="ouvre-t" data-e>Gestion des risques</h2>
+      <p class="ouvre-p" data-e>Quatre modules, du stress test à l’adéquation du capital et de la liquidité.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Les risques mesurés">
+  <div class="page">
+    <header class="tete">
+      <h2 class="titre" data-e>Quatre modules pour la gestion des risques</h2>
+    </header>
+    <dl class="liste-m" data-e>
+      <div><dt>Stress test</dt><dd>Des scénarios qui combinent sept familles de chocs, l’horizon de survie qu’ils laissent et le plan qui le rétablit.</dd></div>
+      <div><dt>Risk Management</dt><dd>Les risques de crédit, de marché et opérationnel du pilier 1, la solvabilité et l’ICAAP.</dd></div>
+      <div><dt>Risque de change</dt><dd>Les positions par devise et leur sensibilité aux cours.</dd></div>
+      <div><dt>ILAAP</dt><dd>L’adéquation de la liquidité, lue sur les calculs des modules, en projection et sous stress.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Stress test" data-demo="stress">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Stress test</p>
+      <h2 class="titre" data-e>L’horizon de survie sous un scénario de chocs combinés</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <p class="note mono">Position de liquidité, Md FCFA</p>
+        <svg class="graphe court" id="grapheSurvie" role="img" aria-label="Position de liquidité dans le temps"></svg>
+        <div class="curseur"><label for="fuite">Fuite des dépôts <output id="fuiteVal"></output></label><input type="range" id="fuite" min="5" max="40" step="1" value="25"></div>
+      </div>
+      <aside class="cle haut">
+        <div class="bascules" id="familles" role="group" aria-label="Familles de chocs du scénario"></div>
+        <div><p class="cle-l">Horizon de survie</p><p class="cle-v" id="stressHorizon">0</p><p class="cle-s" id="stressSolva"></p></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Remédiation" data-demo="remediation">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Plan de remédiation</p>
+      <h2 class="titre" data-e>Les actions qui rétablissent l’horizon de survie</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="curseur"><label for="objectif">Objectif d’horizon de survie, sous une fuite de 30 % des dépôts <output id="objectifVal"></output></label><input type="range" id="objectif" min="30" max="180" step="5" value="90"></div>
+        <div class="actions" id="actions"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Horizon avec le plan</p><p class="cle-v" id="planHorizon">0</p><p class="cle-s" id="planSans"></p></div>
+        <div class="cle-sep"></div>
+        <dl class="cle-liste" id="planKpi"></dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Risk Management">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Risk Management</p>
+      <h2 class="titre" data-e>Les risques du pilier 1, la solvabilité et l’ICAAP</h2>
+    </header>
+    <div class="cartes" data-e>
+      <div class="carte"><b>Risque de crédit</b><p>De l’exposition brute aux actifs pondérés, la qualité du portefeuille et les grands risques.</p></div>
+      <div class="carte"><b>Risque de marché</b><p>Obligations et actions par zone, émetteur et devise ; la courbe des taux et ses variations.</p></div>
+      <div class="carte"><b>Risque opérationnel</b><p>Les pertes par ligne de métier, la cartographie des risques et les plans d’action.</p></div>
+      <div class="carte"><b>ICAAP et capital planning</b><p>Le besoin de capital sous les scénarios de stress, sur l’horizon du plan.</p></div>
+      <div class="carte"><b>Déclaration FODEP</b><p>Une déclaration existante analysée, ou générée depuis les calculs.</p></div>
+      <div class="carte"><b>Solvabilité</b><p>CET1, Tier 1 et solvabilité globale, face au minimum et au coussin de conservation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Un nouveau prêt" data-demo="solvabilite">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Risk Management</p>
+      <h2 class="titre" data-e>L’effet d’un nouveau prêt sur la solvabilité et les grands risques</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="curseurs deux-c">
+          <div class="curseur"><label for="pretMontant">Montant du prêt <output id="pretMontantVal"></output></label><input type="range" id="pretMontant" min="0" max="60" step="1" value="20"></div>
+          <div class="curseur"><label>Pondération du risque</label><span class="seg" id="pretPonderation" role="group" aria-label="Pondération"><button type="button" aria-pressed="false">20 %</button><button type="button" aria-pressed="false">50 %</button><button type="button" aria-pressed="true">100 %</button><button type="button" aria-pressed="false">150 %</button></span></div>
+        </div>
+        <div class="seuils" id="pretRatios"></div>
+        <p class="note">Seuils du dispositif prudentiel de l’UMOA, coussin de conservation compris.</p>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Exposition sur le Tier 1</p><p class="cle-v" id="pretPart">0 %</p><p class="cle-s" id="pretRisque"></p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-s" id="pretRwa"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="Risque de change" data-demo="change">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Risque de change</p>
+      <h2 class="titre" data-e>Les positions de change et l’effet d’une variation de cours</h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="pied-depot"><span class="note mono">Position nette par devise, Md FCFA</span><span class="illus">Valeurs d’illustration</span></div>
+        <div class="barres-h" id="positions"></div>
+        <div class="curseur"><label for="chocDollar">Variation du dollar face au franc CFA <output id="chocDollarVal"></output></label><input type="range" id="chocDollar" min="-20" max="20" step="1" value="10"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Effet sur le résultat</p><p class="cle-v" id="changeEffet">0</p><p class="cle-s">position en dollars, revalorisée au cours choqué</p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span>Chaque arrêté de l’étude garde sa position : la série se lit d’un comité à l’autre.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Gestion des risques" data-nom="ILAAP">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>ILAAP</p>
+      <h2 class="titre" data-e>La liquidité à l’arrêté, en projection et sous stress</h2>
+      <p class="chapo" data-e>L’ILAAP reprend les calculs de la Liquidité, de l’Écoulement et de l’Analyse du bilan et retient, pour chaque indicateur, la valeur la plus défavorable de l’horizon.</p>
+    </header>
+    <div class="zones trois" data-e>
+      <div class="zones-l tete-z"><span></span><b>L’arrêté</b><b>La projection centrale</b><b>Chaque scénario de stress</b></div>
+      <div class="zones-l"><span>Approche normative</span><p data-l="Arrêté">Coefficient de liquidité, emplois à moyen et long terme, LCR, NSFR</p><p data-l="Projection">Les mêmes ratios, projetés</p><p data-l="Stress">Les mêmes ratios sous stress, face à la base</p></div>
+      <div class="zones-l"><span>Approche économique</span><p data-l="Arrêté">Gaps de l’écoulement statique, bloc liquidité du bilan</p><p data-l="Projection">Gap dynamique, bilan projeté</p><p data-l="Stress">Horizon de survie, ressources perdues, décollecte du stock</p></div>
+      <div class="zones-l"><span>Synthèse</span><p data-l="Arrêté">Le point de départ</p><p data-l="Projection">Le point clé de l’horizon et sa date</p><p data-l="Stress">Le point clé, et la base à la même date</p></div>
+    </div>
+  </div>
+</section>

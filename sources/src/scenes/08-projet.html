@@ -1,0 +1,78 @@
+<section class="scene" data-chapitre="Votre projet" data-nom="Questionnaire" data-demo="questionnaire">
+  <div class="page">
+    <header class="tete">
+      <h2 class="titre" data-e>Préparer une démonstration sur votre établissement</h2>
+      <p class="chapo" data-e>Les réponses servent à montrer ALCO One sur un cas proche du vôtre.</p>
+    </header>
+    <div class="corps pour-lecteur" data-e>
+      <ol class="pas-q" id="qPas" aria-label="Étapes du questionnaire">
+        <li><b>1</b>Établissement</li><li><b>2</b>Besoins</li><li><b>3</b>Contact</li>
+      </ol>
+      <form class="questionnaire" id="questionnaire" novalidate>
+        <fieldset class="etape-q" data-etape="1">
+          <legend class="vh">Votre établissement</legend>
+          <label class="champ"><span>Établissement</span><input name="etablissement" required maxlength="120" autocomplete="organization"><small class="erreur"></small></label>
+          <label class="champ"><span>Pays</span><input name="pays" required maxlength="60" autocomplete="country-name"><small class="erreur"></small></label>
+          <fieldset class="champ" data-requis>
+            <legend>Zone</legend>
+            <div class="options"><label class="opt"><input type="radio" name="zone" value="UMOA"><span>UMOA</span></label><label class="opt"><input type="radio" name="zone" value="CEMAC"><span>CEMAC</span></label><label class="opt"><input type="radio" name="zone" value="Autre"><span>Autre</span></label></div>
+            <small class="erreur"></small>
+          </fieldset>
+          <fieldset class="champ" data-requis>
+            <legend>Type d’établissement</legend>
+            <div class="options"><label class="opt"><input type="radio" name="type" value="Banque"><span>Banque</span></label><label class="opt"><input type="radio" name="type" value="Établissement financier"><span>Établissement financier</span></label><label class="opt"><input type="radio" name="type" value="Microfinance"><span>Microfinance</span></label><label class="opt"><input type="radio" name="type" value="Autre"><span>Autre</span></label></div>
+            <small class="erreur"></small>
+          </fieldset>
+          <fieldset class="champ large" data-requis>
+            <legend>Total du bilan</legend>
+            <div class="options"><label class="opt"><input type="radio" name="bilan" value="Moins de 250 Md FCFA"><span>Moins de 250 Md FCFA</span></label><label class="opt"><input type="radio" name="bilan" value="De 250 à 1 000 Md FCFA"><span>De 250 à 1 000 Md FCFA</span></label><label class="opt"><input type="radio" name="bilan" value="Plus de 1 000 Md FCFA"><span>Plus de 1 000 Md FCFA</span></label></div>
+            <small class="erreur"></small>
+          </fieldset>
+        </fieldset>
+
+        <fieldset class="etape-q" data-etape="2" hidden>
+          <legend class="vh">Vos besoins</legend>
+          <fieldset class="champ large" data-requis>
+            <legend>Modules qui vous intéressent</legend>
+            <div class="options"><label class="opt"><input type="checkbox" name="modules" value="Pilotage du bilan"><span>Pilotage du bilan</span></label><label class="opt"><input type="checkbox" name="modules" value="Gestion des risques"><span>Gestion des risques</span></label><label class="opt"><input type="checkbox" name="modules" value="Portefeuille obligataire"><span>Portefeuille obligataire</span></label><label class="opt"><input type="checkbox" name="modules" value="Reporting réglementaire"><span>Reporting réglementaire</span></label></div>
+            <small class="erreur"></small>
+          </fieldset>
+          <fieldset class="champ large" data-requis>
+            <legend>Le comité ALCO se prépare aujourd’hui avec</legend>
+            <div class="options"><label class="opt"><input type="radio" name="outil" value="Des classeurs Excel"><span>Des classeurs Excel</span></label><label class="opt"><input type="radio" name="outil" value="Un logiciel du marché"><span>Un logiciel du marché</span></label><label class="opt"><input type="radio" name="outil" value="Un outil interne"><span>Un outil interne</span></label><label class="opt"><input type="radio" name="outil" value="Pas encore de comité structuré"><span>Pas encore de comité structuré</span></label></div>
+            <small class="erreur"></small>
+          </fieldset>
+          <fieldset class="champ" data-requis>
+            <legend>Échéance du projet</legend>
+            <div class="options"><label class="opt"><input type="radio" name="echeance" value="Moins de 3 mois"><span>Moins de 3 mois</span></label><label class="opt"><input type="radio" name="echeance" value="3 à 6 mois"><span>3 à 6 mois</span></label><label class="opt"><input type="radio" name="echeance" value="6 à 12 mois"><span>6 à 12 mois</span></label><label class="opt"><input type="radio" name="echeance" value="À définir"><span>À définir</span></label></div>
+            <small class="erreur"></small>
+          </fieldset>
+          <fieldset class="champ">
+            <legend>Hébergement <small>facultatif</small></legend>
+            <div class="options"><label class="opt"><input type="radio" name="hebergement" value="Sur nos serveurs"><span>Sur nos serveurs</span></label><label class="opt"><input type="radio" name="hebergement" value="Hébergé par l’éditeur"><span>Hébergé par l’éditeur</span></label><label class="opt"><input type="radio" name="hebergement" value="À définir"><span>À définir</span></label></div>
+          </fieldset>
+        </fieldset>
+
+        <fieldset class="etape-q" data-etape="3" hidden>
+          <legend class="vh">Vos coordonnées</legend>
+          <label class="champ"><span>Nom et prénom</span><input name="nom" required maxlength="100" autocomplete="name"><small class="erreur"></small></label>
+          <label class="champ"><span>Fonction</span><input name="fonction" required maxlength="100" autocomplete="organization-title"><small class="erreur"></small></label>
+          <label class="champ"><span>E-mail professionnel</span><input name="email" type="email" required maxlength="120" autocomplete="email"><small class="erreur"></small></label>
+          <label class="champ"><span>Téléphone <small>facultatif</small></span><input name="telephone" type="tel" maxlength="30" autocomplete="tel"><small class="erreur"></small></label>
+          <label class="champ large"><span>Message <small>facultatif</small></span><textarea name="message" rows="2" maxlength="600"></textarea></label>
+          <div class="champ large" data-requis>
+            <label class="accord"><input type="checkbox" name="accord" value="oui"><span>J’accepte que Heymann’s utilise ces informations pour me recontacter au sujet d’ALCO One.</span></label>
+            <small class="erreur"></small>
+          </div>
+        </fieldset>
+
+        <div class="q-actions">
+          <button type="button" class="btn" id="qPrec"><svg class="ic"><use href="#i-prec"/></svg>Précédent</button>
+          <span class="note mono" id="qEtat"></span>
+          <button type="submit" class="btn pri" id="qSuiv">Continuer<svg class="ic"><use href="#i-suiv"/></svg></button>
+        </div>
+      </form>
+      <div class="q-merci" id="qMerci" hidden></div>
+    </div>
+  </div>
+</section>
