@@ -1,0 +1,158 @@
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Pilotage du bilan">
+  <div class="page centre">
+    <div class="ouvre">
+      <p class="ouvre-n" data-e>01</p>
+      <p class="ouvre-l" data-e>Module</p>
+      <h2 class="ouvre-t" data-e>Pilotage du bilan</h2>
+      <p class="ouvre-p" data-e>Lire le bilan, mesurer ses gaps et ses ratios, expliquer chaque écart d’un arrêté à l’autre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Le bilan lu en entier">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Pilotage du bilan</p>
+      <h2 class="titre" data-e>Le bilan lu en structure, en flux, <em>en taux et en liquidité.</em></h2>
+    </header>
+    <div class="cartes" data-e>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-grid"/></svg></span><b>Analyse du bilan</b><p>Dix vues de l’arrêté et 26 contrôles de cohérence, réglables.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-wave"/></svg></span><b>Écoulement</b><p>Le bilan en flux datés, ses gaps, et leurs variations expliquées.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-liq"/></svg></span><b>Liquidité</b><p>Les ratios de votre zone, calculés sur son propre référentiel.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-pct"/></svg></span><b>IRRBB</b><p>Six chocs de taux, sur la valeur économique et sur la marge.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-scale"/></svg></span><b>TCI / FTP</b><p>Un taux de cession interne qui tarifie chaque opération.</p></div>
+      <div class="carte"><span class="tuile-ic"><svg class="ic"><use href="#i-trend"/></svg></span><b>Projection dynamique</b><p>Le bilan de demain et le plan à moyen terme, avec les mêmes moteurs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Analyse du bilan" data-demo="bilan">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Analyse du bilan</p>
+      <h2 class="titre" data-e>Dix vues de l’arrêté, <em>26 contrôles de cohérence.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><div class="onglets" id="bilanOnglets" role="group" aria-label="Vues de l’analyse du bilan"></div><span class="illus">Valeurs d’illustration</span></div>
+      <div class="vue" id="bilanVue" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Écoulement" data-demo="ecoulement">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Écoulement</p>
+      <h2 class="titre" data-e>Le bilan devient <em>des flux datés.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="pied-depot"><span class="seg" id="ecoMesure" role="group" aria-label="Mesure"><button type="button" aria-pressed="true">Gap</button><button type="button" aria-pressed="false">Gap cumulé</button></span><span class="note mono">Md FCFA, par time bucket</span></div>
+        <div class="barres" id="ecoBarres" role="img" aria-label="Gap par time bucket"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Plus fort gap</p><p class="cle-v">+60<small>Md FCFA</small></p><p class="cle-s">entre 1 et 5 ans</p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span>Le dernier gap cumulé revient à zéro : le bilan s’équilibre.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Variations des gaps" data-demo="cascade">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Écoulement, variations des gaps</p>
+      <h2 class="titre" data-e>Entre deux arrêtés, <em>chaque écart a sa cause.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><span class="seg pour-lecteur" id="segLecture" role="group" aria-label="Lecture de la décomposition"><button type="button" aria-pressed="true">Quatre composantes</button><button type="button" aria-pressed="false">Six effets</button></span><span class="note mono">Gap de 1 à 5 ans, Md FCFA</span></div>
+      <div class="marches" id="marches"></div>
+      <div class="bilan-cascade" id="bilanCascade"></div>
+      <div class="choix gauche" id="effet" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Liquidité" data-demo="liquidite">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Liquidité réglementaire</p>
+      <h2 class="titre" data-e>Les ratios <em>de votre zone.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="pied-depot"><span class="seg" id="zoneLiq" role="group" aria-label="Zone de l’établissement"><button type="button" aria-pressed="true">UMOA</button><button type="button" aria-pressed="false">CEMAC</button></span><span class="illus">Valeurs d’illustration</span></div>
+      <div class="ratios" id="ratios" role="group" aria-label="Ratios de liquidité"></div>
+      <div class="choix gauche" id="ratioChoix" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="IRRBB" data-demo="chocs">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>IRRBB</p>
+      <h2 class="titre" data-e>Six chocs de taux, <em>un seuil à tenir.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="legende"><span><i class="tirets"></i>Courbe de l’arrêté</span><span><i></i>Après le choc</span></div>
+        <svg class="graphe" id="grapheChoc" role="img" aria-label="Courbe de taux avant et après le choc choisi"></svg>
+      </div>
+      <aside class="cle haut">
+        <div class="liste-chocs" id="chocs" role="group" aria-label="Choix du choc de taux">
+          <button type="button" aria-pressed="true">Parallèle haussier</button><button type="button" aria-pressed="false">Parallèle baissier</button><button type="button" aria-pressed="false">Pentification</button><button type="button" aria-pressed="false">Aplatissement</button><button type="button" aria-pressed="false">Hausse des taux courts</button><button type="button" aria-pressed="false">Baisse des taux courts</button>
+        </div>
+        <div><p class="cle-l">ΔEVE sur Tier 1</p><p class="cle-v" id="kpiChoc">−11,2 %</p><p class="cle-s" id="kpiMni">ΔMNI à un an : −2,4 %</p></div>
+        <p class="cle-ok" id="etatChoc"><svg class="ic"><use href="#i-check"/></svg><span>Sous le seuil de 15 % de l’outlier test.</span></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="TCI / FTP" data-demo="tci">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>TCI / FTP</p>
+      <h2 class="titre" data-e>Le taux de cession interne <em>tarifie chaque opération.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <span class="seg" id="tciProduit" role="group" aria-label="Produit"><button type="button" aria-pressed="true">Crédit aux entreprises</button><button type="button" aria-pressed="false">Crédit immobilier</button><button type="button" aria-pressed="false">Trésorerie des PME</button></span>
+        <div class="curseurs trois">
+          <div class="curseur"><label for="tciDuree">Durée <output id="tciDureeVal"></output></label><input type="range" id="tciDuree" min="1" max="15" step="1" value="5"></div>
+          <div class="curseur"><label for="tciMontant">Montant <output id="tciMontantVal"></output></label><input type="range" id="tciMontant" min="10" max="2000" step="10" value="500"></div>
+          <div class="curseur"><label for="tciTaux">Taux client <output id="tciTauxVal"></output></label><input type="range" id="tciTaux" min="6" max="14" step="0.05" value="10.5"></div>
+        </div>
+        <div class="compo" id="tciCompo"></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">RAROC de l’opération</p><p class="cle-v" id="tciRaroc">0 %</p><p class="cle-s" id="tciSeuil">seuil 15 %</p></div>
+        <div class="cle-sep"></div>
+        <dl class="cle-liste" id="tciTaux3"></dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Pilotage du bilan" data-nom="Projection dynamique" data-demo="projection">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Projection dynamique</p>
+      <h2 class="titre" data-e>Le bilan de demain, <em>avec les mêmes moteurs.</em></h2>
+    </header>
+    <div class="panneau" data-e>
+      <div class="corps">
+        <div class="legende"><span><i class="stock"></i>Stock écoulé</span><span><i></i>Production nouvelle</span></div>
+        <svg class="graphe court" id="projGraphe" role="img" aria-label="Encours de crédits projeté sur douze trimestres"></svg>
+        <div class="curseur"><label for="projProd">Production nouvelle par trimestre <output id="projProdVal"></output></label><input type="range" id="projProd" min="0" max="60" step="5" value="30"></div>
+        <div class="voies"><span class="cle-l">Trois voies pour la production nouvelle, sans second moteur</span><div class="puces"><span class="puce">Hypothèses sur les postes</span><span class="puce">Plan importé avec le classeur</span><span class="puce">Atelier PMT en huit étapes</span></div></div>
+      </div>
+      <aside class="cle">
+        <div><p class="cle-l">Encours à trois ans</p><p class="cle-v" id="projTotal">0<small>Md</small></p><p class="cle-s" id="projEvol"></p></div>
+        <div class="cle-sep"></div>
+        <p class="cle-ok"><svg class="ic"><use href="#i-check"/></svg><span id="projPart"></span></p>
+      </aside>
+    </div>
+  </div>
+</section>

@@ -95,12 +95,13 @@ est entré le 04/11/2026, quand il a lu les calculs des modules. Le fichier livr
 ## Publication
 
 `publication/` est le dépôt git de la page en ligne, servie par GitHub Pages : la v6 à la racine,
-la v7 sous `v7/`, et sous `sources/` une copie de `src/`, `polices/`, `construire.mjs`,
-`package.json` et de ce fichier. Avant un commit et un push :
+la v7 sous `v7/`. `sources/v7/` porte une copie de `src/`, `polices/`, `construire.mjs`,
+`package.json` et de ce fichier ; `sources/v6/`, celles de la v6, figées. Avant un commit et un
+push :
 
 ```sh
 node construire.mjs publication/v7/index.html
-rsync -a --delete --exclude .DS_Store src polices construire.mjs package.json README.md publication/sources/
+rsync -a --delete --exclude .DS_Store src polices construire.mjs package.json README.md publication/sources/v7/
 ```
 
 La page demande aux moteurs de recherche de ne pas la référencer ; toute personne qui a le lien la

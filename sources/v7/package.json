@@ -1,0 +1,10 @@
+{
+  "name": "alco-one-presentation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Présentation synthétique d'ALCO One, en un seul fichier HTML.",
+  "scripts": {
+    "construire": "node construire.mjs"
+  }
+}

@@ -1,0 +1,34 @@
+<section class="scene" data-chapitre="Portefeuille obligataire" data-nom="Portefeuille obligataire">
+  <div class="page centre">
+    <div class="ouvre">
+      <p class="ouvre-n" data-e>03</p>
+      <p class="ouvre-l" data-e>Module</p>
+      <h2 class="ouvre-t" data-e>Portefeuille obligataire</h2>
+      <p class="ouvre-p" data-e>Valoriser les titres, mesurer leur risque, simuler un achat avant de le décider.</p>
+      <div class="puces" data-e>
+        <span class="puce">Valorisation sur la courbe de l’arrêté</span>
+        <span class="puce">Duration et DV01</span>
+        <span class="puce">VaR à 99 %</span>
+        <span class="puce">9 analyses au catalogue</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-chapitre="Portefeuille obligataire" data-nom="Achat simulé" data-demo="gpo">
+  <div class="page">
+    <header class="tete">
+      <p class="surtitre" data-e>Gestion du portefeuille obligataire</p>
+      <h2 class="titre" data-e>Un achat simulé <em>avant d’être décidé.</em></h2>
+    </header>
+    <div class="corps" data-e>
+      <div class="curseurs trois">
+        <div class="curseur"><label for="gpoMat">Maturité <output id="gpoMatVal"></output></label><input type="range" id="gpoMat" min="1" max="10" step="1" value="7"></div>
+        <div class="curseur"><label for="gpoCoupon">Coupon <output id="gpoCouponVal"></output></label><input type="range" id="gpoCoupon" min="5" max="8" step="0.25" value="6.75"></div>
+        <div class="curseur"><label for="gpoMontant">Nominal <output id="gpoMontantVal"></output></label><input type="range" id="gpoMontant" min="0" max="60" step="5" value="30"></div>
+      </div>
+      <div class="avap" id="gpoKpi"></div>
+      <p class="note mono">Valorisation sur la courbe de l’arrêté ; VaR paramétrique à 99 % sur 10 jours.</p>
+    </div>
+  </div>
+</section>
